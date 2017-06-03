@@ -1,4 +1,4 @@
-package com.edonoxako.mathtest;
+package com.edonoxako.mathtest.evaluator;
 
 import com.edonoxako.mathtest.evaluator.expressiontree.ParserException;
 import org.junit.Test;

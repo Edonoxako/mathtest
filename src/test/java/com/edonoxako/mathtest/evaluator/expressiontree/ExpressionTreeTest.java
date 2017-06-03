@@ -1,6 +1,6 @@
-package com.edonoxako.mathtest;
+package com.edonoxako.mathtest.evaluator.expressiontree;
 
-import com.edonoxako.mathtest.evaluator.expressiontree.ExpressionNode;
+import com.edonoxako.mathtest.evaluator.BaseExpressionTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

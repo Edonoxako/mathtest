@@ -1,7 +1,5 @@
-package com.edonoxako.mathtest;
+package com.edonoxako.mathtest.evaluator;
 
-import com.edonoxako.mathtest.evaluator.Parser;
-import com.edonoxako.mathtest.evaluator.Tokenizer;
 import org.junit.Before;
 
 import java.util.List;

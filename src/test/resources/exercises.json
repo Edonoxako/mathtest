@@ -1,7 +1,19 @@
 [
   {
     "id": 0,
-    "definition": "dummy definition",
+    "definition": "dummy-1",
     "expression": "(a - b) * (a + b)"
+  },
+
+  {
+    "id": 1,
+    "definition": "dummy-2",
+    "expression": "a^2 + 2*a*b + b^2"
+  },
+
+  {
+    "id": 2,
+    "definition": "dummy-3",
+    "expression": "(a - b)^2"
   }
 ]
