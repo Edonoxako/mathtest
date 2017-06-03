@@ -3,6 +3,7 @@ package com.edonoxako.mathtest.exercises.data;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by edono on 29.05.2017.
  */
+@Repository
 public class FileRepository implements ExercisesRepository {
 
     public static final String EXERCISES_FILE = "exercises.json";

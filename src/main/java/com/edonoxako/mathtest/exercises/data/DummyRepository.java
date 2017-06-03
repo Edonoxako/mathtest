@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by edono on 13.05.2017.
  */
-@Repository
 public class DummyRepository implements ExercisesRepository {
 
     private static final String DUMMY_EXERCISE = "Дано выражение `a^2 - b^2`. Разверните его используя формулу сокращённого умножения";
