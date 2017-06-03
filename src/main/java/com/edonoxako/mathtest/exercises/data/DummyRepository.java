@@ -2,6 +2,8 @@ package com.edonoxako.mathtest.exercises.data;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by edono on 13.05.2017.
  */
@@ -13,6 +15,11 @@ public class DummyRepository implements ExercisesRepository {
     @Override
     public Exercise getExercise(int exerciseId) {
         return new Exercise(exerciseId, DUMMY_EXERCISE, DUMMY_EXPRESSION);
+    }
+
+    @Override
+    public List<Exercise> getAllExercises() {
+        return null;
     }
 
 }

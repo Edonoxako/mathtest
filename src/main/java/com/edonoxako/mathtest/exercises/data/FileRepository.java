@@ -27,6 +27,17 @@ public class FileRepository implements ExercisesRepository {
 
     @Override
     public Exercise getExercise(int exerciseId) {
+        List<Exercise> exercises = getAllExercises();
+        if (exercises == null) return null;
+
+        return exercises.stream()
+                .filter(exercise -> exercise.getId() == exerciseId)
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public List<Exercise> getAllExercises() {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             URL exercisesResource = classLoader.getResource(EXERCISES_FILE);
@@ -35,13 +46,7 @@ public class FileRepository implements ExercisesRepository {
 
             File file = new File(exercisesResource.getFile());
             CollectionType exercisesCollectionType = jsonMapper.getTypeFactory().constructCollectionType(List.class, Exercise.class);
-            List<Exercise> exercises = jsonMapper.readValue(file, exercisesCollectionType);
-
-            return exercises.stream()
-                    .filter(exercise -> exercise.getId() == exerciseId)
-                    .findFirst()
-                    .orElse(null);
-
+            return jsonMapper.readValue(file, exercisesCollectionType);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

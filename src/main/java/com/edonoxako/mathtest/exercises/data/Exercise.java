@@ -43,4 +43,24 @@ public class Exercise {
     public void setExpression(String expression) {
         this.expression = expression;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Exercise exercise = (Exercise) o;
+
+        if (id != null ? !id.equals(exercise.id) : exercise.id != null) return false;
+        if (definition != null ? !definition.equals(exercise.definition) : exercise.definition != null) return false;
+        return expression != null ? expression.equals(exercise.expression) : exercise.expression == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (definition != null ? definition.hashCode() : 0);
+        result = 31 * result + (expression != null ? expression.hashCode() : 0);
+        return result;
+    }
 }

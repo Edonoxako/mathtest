@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by edono on 13.05.2017.
  */
@@ -27,5 +29,10 @@ public class LoadExercisesController extends BaseController {
     @RequestMapping("/load/{exerciseId}")
     public Exercise getExercise(@PathVariable int exerciseId) {
         return repository.getExercise(exerciseId);
+    }
+
+    @RequestMapping("/load")
+    public List<Exercise> getAllExercises() {
+        return repository.getAllExercises();
     }
 }
