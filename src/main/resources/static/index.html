@@ -9,44 +9,51 @@
 </head>
 
 <body>
-    <div class='container'>
-      <div class='jumbotron'>
-          <h1 class='display-4'>Задача</h1>
-          <p id="exercise-definition" class='lead'></p>
-      </div>
-      <div class='row justify-content-center'>
-          <div class='col-md-8'>
-              <div id='formula-rendered' class='lead text-center'>Formula will be rendered there</div>
-          </div>
-      </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="exercise-list" class="list-group"></div>
+            </div>
+            <div class="col-md-8 container">
+                <div class='jumbotron'>
+                    <h1 class='display-4'>Задача</h1>
+                    <p id="exercise-definition" class='lead'></p>
+                </div>
+                <div class='row justify-content-center'>
+                    <div class='col-md-8'>
+                        <div id='formula-rendered' class='lead text-center'>Formula will be rendered there</div>
+                    </div>
+                </div>
 
-      <div id="success-message" class="control collapse">
-          <div class='col-md-12 alert alert-success text-align-center'>
-              <h1>Correct! <small><a href="#" class="alert-link back-to-editor-btn">back to editor</a></small></h1>
-          </div>
-      </div>
+                <div id="success-message" class="control collapse">
+                    <div class='col-md-12 alert alert-success text-align-center'>
+                        <h1>Correct! <small><a href="#" class="alert-link back-to-editor-btn">back to editor</a></small></h1>
+                    </div>
+                </div>
 
-        <div id="failure-message" class="control collapse">
-            <div class='alert alert-danger text-align-center'>
-                <h1>Wrong! <small><a href="#" class="alert-link back-to-editor-btn">back to editor</a></small></h1>
+                <div id="failure-message" class="control collapse">
+                    <div class='alert alert-danger text-align-center'>
+                        <h1>Wrong! <small><a href="#" class="alert-link back-to-editor-btn">back to editor</a></small></h1>
+                    </div>
+                </div>
+
+                <div id="error-message" class="control collapse">
+                    <div class='alert alert-danger text-align-center'>
+                        <h1>Error! Check whether your answer is typed correctly!<br><small><a href="#" class="alert-link back-to-editor-btn">back to editor</a></small></h1>
+                    </div>
+                </div>
+
+                <div id="editor" class='row justify-content-center control'>
+                    <div class='col-md-8'>
+                        <textarea class='formula-input' placeholder='Type your formula there'></textarea>
+                    </div>
+                    <div class='col-md-1 no-padding'>
+                        <button id="send-btn" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-        <div id="error-message" class="control collapse">
-            <div class='alert alert-danger text-align-center'>
-                <h1>Error! Check whether your answer is typed correctly!<br><small><a href="#" class="alert-link back-to-editor-btn">back to editor</a></small></h1>
-            </div>
-        </div>
-
-      <div id="editor" class='row justify-content-center control'>
-          <div class='col-md-8'>
-              <textarea class='formula-input' placeholder='Type your formula there'></textarea>
-          </div>
-          <div class='col-md-1 no-padding'>
-              <button id="send-btn" class="btn btn-primary">Send</button>
-          </div>
-      </div>
-
     </div>
 
   <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML&delayStartupUntil=onload'></script>

@@ -1,11 +1,19 @@
+var INITIAL_ACTIVE_EXERCISE = 0;
+
 var cleared = false;
 var baseUri = window.location.origin;
+var currentExerciseId = INITIAL_ACTIVE_EXERCISE;
+
+function debug(message) {
+    console.debug(message);
+}
 
 $(function() {
-    loadExercise(0);
+    loadExerciseList();
+    loadExercise(INITIAL_ACTIVE_EXERCISE);
 
     $('#send-btn').click(function (event) {
-        sendForChecking($('.formula-input').val());
+        sendForChecking(currentExerciseId, $('.formula-input').val());
     });
 
     $('.formula-input').on('input', function(e) {
@@ -52,23 +60,64 @@ function renderDefinition(definition) {
 
 function loadExercise(exerciseId) {
     var path = '/api/exercise/load/' + exerciseId;
-    $.ajax({
-        url: baseUri + path,
-        type: 'GET',
-        success: function(response) {
-            console.log(response);
-            renderDefinition(response.definition);
-        }
+    load(path, function(response) {
+        debug(response);
+        renderDefinition(response.definition);
     });
 }
 
-function sendForChecking(formulaForChecking) {
+function loadExerciseList() {
+    var path = '/api/exercise/load';
+    load(path, function(response) {
+        debug(response);
+        showExerciseList(response);
+        setActive(INITIAL_ACTIVE_EXERCISE);
+    });
+}
+
+function load(path, responseCallback) {
+     $.ajax({
+         url: baseUri + path,
+         type: 'GET',
+         success: responseCallback
+     });
+}
+
+function showExerciseList(exercises) {
+    var exerciseList = $("#exercise-list");
+    exercises.forEach(function (exercise) {
+        exerciseList.append(listItem(exercise));
+    });
+    listenToItemClicks();
+}
+
+function listItem(exercise) {
+    return '<a href="#" id="exercise' + exercise.id + '" class="list-group-item">' + exercise.definition + '</a>';
+}
+
+function listenToItemClicks() {
+    $('.list-group-item').click(function(e) {
+         var id = $(this).attr('id').replace('exercise', '');
+         debug('Clicked exercise id: ' + id);
+
+         loadExercise(id);
+         setActive(id);
+         currentExerciseId = id;
+    });
+}
+
+function setActive(exerciseId) {
+    $('.list-group-item').removeClass('active');
+    $('#exercise' + exerciseId).addClass('active');
+}
+
+function sendForChecking(exerciseId, formulaForChecking) {
     var path = '/api/exercise/check';
     $.ajax({
         url: baseUri + path,
         type: 'POST',
         data: JSON.stringify({
-            taskId: 0,
+            taskId: exerciseId,
             answerFormula: formulaForChecking
         }),
         contentType: 'application/json; charset=utf-8',
